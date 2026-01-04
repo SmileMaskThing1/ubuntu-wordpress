@@ -1,31 +1,31 @@
-Ubuntu setup:
+>> --- Ubuntu setup ---
 
-. during install, language should be English.
-. Keep keyboard layout the same.
-> Leave Ubuntu server checked.
-> Keep IPv4 static. Just press Done.
-> No need for proxy, just skip this one.
-> Once repositories are listed, press Done.
-> (Root) Custom Storage Layout -> Free Space -> Add GPT Partition -> 25G; Mount: / -> Create.
-> (Home) Free Space -> Add GPT Partition -> 7G; Mount: /home -> Create.
-> (Physical) Add Partition -> 6.9G; Format: Swap -> Create.
-> Once all three partitions are made, tab and press Done; then Continue.
-> Name: Giorgi -> ServerName: giorgiserver1 -> username: student -> password: 1234
-> Do not activate Ubuntu Pro, just continue.
-> check Install OpenSSH Server before pressing Done.
-> Skip services, just press Done; Then wait for a good while for it to install before it prompts you to continue.
-> When Reboot Now is listed, just press it; Once it prompts you to "remove installation medium", just press ENTER, as this is just a virtual machine.
+during install, language should be English.
+Keep keyboard layout the same.
+Leave Ubuntu server checked.
+Keep IPv4 static. Just press Done.
+No need for proxy, just skip this one.
+Once repositories are listed, press Done.
+(Root) Custom Storage Layout -> Free Space -> Add GPT Partition -> 25G; Mount: / -> Create.
+(Home) Free Space -> Add GPT Partition -> 7G; Mount: /home -> Create.
+(Physical) Add Partition -> 6.9G; Format: Swap -> Create.
+Once all three partitions are made, tab and press Done; then Continue.
+Name: "your name" -> ServerName: "your name"server1 -> username: student -> password: 1234
+Do not activate Ubuntu Pro, just continue.
+check Install OpenSSH Server before pressing Done.
+Skip services, just press Done; Then wait for a good while for it to install before it prompts you to continue.
+When Reboot Now is listed, just press it; Once it prompts you to "remove installation medium", just press ENTER, as this is just a virtual machine.
 
->> login: student -> password: 1234 (as we have set up)
+login: student -> password: 1234 (as we have set up)
 
 >> --- Commands to eventually set up desktop experience ---
->> sudo -s (password 1234) (takes us to /home)
->> apt update
->> apt upgrade -y
->> ifconfig -> apt install net-tools -y
->> ifconfig (checking inet)
->> apt install mc -y
->> mc (why not)
+sudo -s (password 1234) (takes us to /home)
+apt update
+apt upgrade -y
+ifconfig -> apt install net-tools -y
+ifconfig (checking inet)
+apt install mc -y
+mc (why not)
 
 >> --- Set up ubuntu desktop experience --- 
 >> apt install ubuntu-desktop -y
@@ -35,8 +35,7 @@ Ubuntu setup:
 ------------------------------------------------------------
 ------------------------------------------------------------
 ------------------------------------------------------------
-Wordpress setup:
-
+>> --- Wordpress setup ---
 
 >> --- Update system ---
 sudo apt update && sudo apt upgrade -y
@@ -73,10 +72,10 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -out /etc/apache2/ssl/apache.crt
 
 >> --- Edit Apache SSL config (default-ssl.conf) ---
-# Insert inside <VirtualHost _default_:443>:
-# SSLEngine on
-# SSLCertificateFile /etc/apache2/ssl/apache.crt
-# SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+Insert inside <VirtualHost _default_:443>:
+SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/apache.crt
+SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 sudo nano /etc/apache2/sites-available/default-ssl.conf
 
 >> --- Enable SSL in Apache ---
@@ -85,7 +84,7 @@ sudo a2ensite default-ssl
 sudo systemctl reload apache2
 
 >> --- Test access ---
->> HTTP:
->>   http://<your_VM_IP>/wordpress
->> HTTPS:
->>   https://<your_VM_IP>/wordpress
+> HTTP:
+>    http://<your_VM_IP>/wordpress
+> HTTPS:
+>    https://<your_VM_IP>/wordpress
