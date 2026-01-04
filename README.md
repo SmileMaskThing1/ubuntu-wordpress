@@ -1,7 +1,7 @@
 Ubuntu setup:
 
-> during install, language should be English.
-> Keep keyboard layout the same.
+. during install, language should be English.
+. Keep keyboard layout the same.
 > Leave Ubuntu server checked.
 > Keep IPv4 static. Just press Done.
 > No need for proxy, just skip this one.
